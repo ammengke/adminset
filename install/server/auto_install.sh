@@ -37,7 +37,7 @@ fi
 # 安装依赖
 echo "####install depandencies####"
 yum install -y epel-release
-yum install -y gcc expect python-pip python-devel smartmontools dmidecode libselinux-python git rsync dos2unix
+yum install -y gcc expect python-pip python-devel ansible smartmontools dmidecode libselinux-python git rsync dos2unix
 yum install -y openssl openssl-devel openldap-devel
 
 # 分发代码
@@ -62,6 +62,7 @@ mysql -e "CREATE DATABASE if not exists adminset DEFAULT CHARACTER SET utf8 COLL
 echo "####install mongodb####"
 echo "installing a new Mongodb...."
 yum install -y mongodb mongodb-server
+scp $adminset_dir/install/server/mongo/mongod.conf /etc/mongod.conf
 /bin/systemctl enable mongod.service
 /bin/systemctl start mongod.service
 
