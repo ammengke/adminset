@@ -164,9 +164,9 @@
                                 <input id="checkall" type="checkbox" class="i-checks" name="checkall" value="checkall" data-editable='false' onclick="check_all('asset_form')">
                             </th>
                                     <th>主机名</th>
-                                    <th>设备类型</th>
-                                    <th>状态</th>
                                     <th>管理IP</th>
+                                    <th>设备类型</th>
+                                    <th>状态</th>                                    
                                     <th>CPU</th>
                                     <th>内存(G)</th>
                                     <th>机房</th>
@@ -178,6 +178,7 @@
                                     <tr class="even gradeX">
                                         <td><input type="checkbox" id="id" class="i-checks" value="{{ host.id }}" name="id" /></td>
                                         <td><a href="#"><li style="list-style-type:none" onclick="return detail(this.value)" value="{{ host.id }}"> {{ host.hostname }}</li></a></td>
+                                        <td>{{ host.ip }}</td>
                                         <td>
                                         {% for s in asset_types %}
                                             {% ifequal s.0|int2str host.asset_type %}
@@ -192,7 +193,6 @@
                                             {% endifequal %}
                                         {% endfor %}
                                         </td>
-                                        <td>{{ host.ip }}</td>
                                         <td>{{ host.cpu_num }}</td>
                                         <td>{{ host.memory }}</td>
                                         <td>{{ host.idc }}</td>
